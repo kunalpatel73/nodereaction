@@ -1,0 +1,31 @@
+{
+  "name": "nodereaction",
+  "version": "0.0.1",
+  "description": "NodeReaction is a node development tool designed to analyze the performance of aysnc requests.",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/retrowavelabs/nodereaction.git"
+  },
+  "keywords": [
+    "node",
+    "analysis",
+    "performance"
+  ],
+  "author": "Retro Wave Labs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/retrowavelabs/nodereaction/issues"
+  },
+  "homepage": "https://github.com/retrowavelabs/nodereaction#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^5.0.9",
+    "nodemon": "^1.17.1",
+    "path": "^0.12.7"
+  }
+}
