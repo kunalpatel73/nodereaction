@@ -7,8 +7,8 @@ app.use(express.static(__dirname + './../')); //serves the index.html
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.get('/api/routeUpdate', (req, res, next) => {
-    res.json('{}');
+app.get('/routeList', (req, res, next) => {
+    res.json(['/GET', '/POST', '/DELETE', '/PUT']);
 });
 
 
