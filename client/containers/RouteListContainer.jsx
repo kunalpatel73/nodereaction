@@ -6,6 +6,16 @@ class RouteListContainer extends Component {
     constructor(props) {
         super(props);
     }
+    componentDidMount() {
+        fetch('http://localhost:3000/api/routeUpdate', {
+            method: 'GET'
+        })
+            .then(res => res.json())
+            .then(routes => {
+                console.log(routes)
+            })
+            .catch(error => console.error('Error:', error));
+    }
 
     render() {
         return (
