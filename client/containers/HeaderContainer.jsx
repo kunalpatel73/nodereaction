@@ -10,8 +10,9 @@ class HeaderContainer extends Component {
     render() {
         return (
             <div>
-                <HeaderLogo />
                 <HeaderTitle />
+                {/* <HeaderLogo /> */}
+                
             </div>
         )
     }
