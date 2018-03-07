@@ -9,11 +9,22 @@ class RouteContainer extends Component {
 
     render() {
         return (
-            <div>
-                <RouteTitle />
-                <RouteTimelineContainer />
+            <div style={styles.routeContainer}>
+                {/* <RouteTitle />
+                <RouteTimelineContainer /> */}
             </div>
         )
+    }
+}
+
+const styles = {
+    routeContainer: {
+        position: 'absolute',
+        top: 100,
+        left: 350,
+        width: 800,
+        height: 900,
+        backgroundColor: '#323232'
     }
 }
 
