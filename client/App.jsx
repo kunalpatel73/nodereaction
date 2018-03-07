@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import HeaderContainer from './containers/HeaderContainer.jsx';
-import RouteContainer from './containers/RouteContainer.jsx';
 import RouteListContainer from './containers/RouteListContainer.jsx';
+import { Route, NavLink, HashRouter } from "react-router-dom";
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class App extends Component {
     constructor(props) {
@@ -11,9 +12,10 @@ class App extends Component {
     render() {
         return (
             <div>
-                <HeaderContainer />
-                <RouteContainer />
-                <RouteListContainer /> 
+                <MuiThemeProvider>
+                    <HeaderContainer />
+                    <RouteListContainer />
+                </MuiThemeProvider>
             </div>
         )
     }
