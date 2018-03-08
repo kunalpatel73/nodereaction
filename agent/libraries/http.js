@@ -1,4 +1,4 @@
-const NRA = require('../NodeReactionAgent.js');
+const NRA = require('./../NodeReactionAgent.js');
 const http = require('http');
 
 let original = http.Server.prototype.emit;
@@ -13,3 +13,4 @@ http.Server.prototype.emit = function(event,req,res){
   }
   return original.apply(this, arguments);
 }
+ 
