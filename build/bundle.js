@@ -4623,7 +4623,7 @@ var _App = __webpack_require__(113);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _styles = __webpack_require__(252);
+var _styles = __webpack_require__(254);
 
 var _styles2 = _interopRequireDefault(_styles);
 
@@ -11477,7 +11477,7 @@ var _Paper2 = _interopRequireDefault(_Paper);
 
 var _colors = __webpack_require__(42);
 
-var _RouteContainer = __webpack_require__(257);
+var _RouteContainer = __webpack_require__(252);
 
 var _RouteContainer2 = _interopRequireDefault(_RouteContainer);
 
@@ -11499,7 +11499,7 @@ var App = function (_Component) {
 
         _this.state = {
             routes: [],
-            currentRoute: []
+            currentRoute: {}
         };
         _this.setCurrentRoute = _this.setCurrentRoute.bind(_this);
         _this.routeItemClicked = _this.routeItemClicked.bind(_this);
@@ -11546,7 +11546,13 @@ var App = function (_Component) {
     }, {
         key: 'routeItemClicked',
         value: function routeItemClicked(id) {
-            this.setState({ currentRoute: id });
+            // this.state.currentRoute = this.state.routes[id];
+            console.log(this.state.currentRoute);
+            var labelName = this.state.routes[id].requestMethod + ' ' + this.state.routes[id].requestUrl;
+            var newState = this.state;
+            newState.currentRoute.id = labelName;
+            this.setState({ newState: newState });
+
             console.log('route id: ' + id);
         }
     }, {
@@ -24159,8 +24165,128 @@ exports.default = {
 /* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
 
-var content = __webpack_require__(253);
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _RouteTimelineContainer = __webpack_require__(259);
+
+var _RouteTimelineContainer2 = _interopRequireDefault(_RouteTimelineContainer);
+
+var _RouteTitle = __webpack_require__(253);
+
+var _RouteTitle2 = _interopRequireDefault(_RouteTitle);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var RouteContainer = function (_Component) {
+    _inherits(RouteContainer, _Component);
+
+    function RouteContainer(props) {
+        _classCallCheck(this, RouteContainer);
+
+        return _possibleConstructorReturn(this, (RouteContainer.__proto__ || Object.getPrototypeOf(RouteContainer)).call(this, props));
+    }
+
+    _createClass(RouteContainer, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { style: styles.routeContainer },
+                _react2.default.createElement(_RouteTitle2.default, { currentRoute: this.props.currentRoute }),
+                _react2.default.createElement(_RouteTimelineContainer2.default, { currentRoute: this.props.currentRoute })
+            );
+        }
+    }]);
+
+    return RouteContainer;
+}(_react.Component);
+
+var styles = {
+    routeContainer: {
+        position: 'absolute',
+        top: 100,
+        left: 350,
+        width: 800,
+        height: 900,
+        backgroundColor: '#323232'
+    }
+};
+
+exports.default = RouteContainer;
+
+/***/ }),
+/* 253 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var RouteTitle = function (_Component) {
+    _inherits(RouteTitle, _Component);
+
+    function RouteTitle(props) {
+        _classCallCheck(this, RouteTitle);
+
+        return _possibleConstructorReturn(this, (RouteTitle.__proto__ || Object.getPrototypeOf(RouteTitle)).call(this, props));
+    }
+
+    _createClass(RouteTitle, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'h1',
+                null,
+                this.props.currentRoute.id
+            );
+        }
+    }]);
+
+    return RouteTitle;
+}(_react.Component);
+
+exports.default = RouteTitle;
+
+/***/ }),
+/* 254 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(255);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -24174,7 +24300,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(255)(content, options);
+var update = __webpack_require__(257)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -24206,10 +24332,10 @@ if(false) {
 }
 
 /***/ }),
-/* 253 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(254)(false);
+exports = module.exports = __webpack_require__(256)(false);
 // imports
 
 
@@ -24220,7 +24346,7 @@ exports.push([module.i, "body {\n  background: black;\n  color: #005CC5;\n  text
 
 
 /***/ }),
-/* 254 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24302,7 +24428,7 @@ function toComment(sourceMap) {
 }
 
 /***/ }),
-/* 255 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -24368,7 +24494,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(256);
+var	fixUrls = __webpack_require__(258);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -24684,7 +24810,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 256 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24779,7 +24905,7 @@ module.exports = function (css) {
 };
 
 /***/ }),
-/* 257 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -24803,48 +24929,30 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// import RouteTimelineContainer from './containers/RouteTimelineContainer.jsx';
-// import RouteTitle from '../components/RouteTitle';
+var RouteTimelineContainer = function (_Component) {
+    _inherits(RouteTimelineContainer, _Component);
 
-var RouteContainer = function (_Component) {
-    _inherits(RouteContainer, _Component);
+    function RouteTimelineContainer(props) {
+        _classCallCheck(this, RouteTimelineContainer);
 
-    function RouteContainer(props) {
-        _classCallCheck(this, RouteContainer);
-
-        return _possibleConstructorReturn(this, (RouteContainer.__proto__ || Object.getPrototypeOf(RouteContainer)).call(this, props));
+        return _possibleConstructorReturn(this, (RouteTimelineContainer.__proto__ || Object.getPrototypeOf(RouteTimelineContainer)).call(this, props));
     }
 
-    _createClass(RouteContainer, [{
+    _createClass(RouteTimelineContainer, [{
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                'div',
-                { style: styles.routeContainer },
-                _react2.default.createElement(
-                    'h1',
-                    null,
-                    this.props.currentRoute
-                )
+                'h1',
+                null,
+                this.props.currentRoute.id
             );
         }
     }]);
 
-    return RouteContainer;
+    return RouteTimelineContainer;
 }(_react.Component);
 
-var styles = {
-    routeContainer: {
-        position: 'absolute',
-        top: 100,
-        left: 350,
-        width: 800,
-        height: 900,
-        backgroundColor: '#323232'
-    }
-};
-
-exports.default = RouteContainer;
+exports.default = RouteTimelineContainer;
 
 /***/ })
 /******/ ]);
