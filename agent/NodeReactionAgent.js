@@ -1,5 +1,10 @@
 const Transaction = require("./Transaction");
 
+//Circular dependency is affecting export FIX THIS
+// //importing here will override for later invocation
+// const httpLib = require("./libraries/http.js");
+// const mongoLib = require("./libraries/mongo.js");
+
 class NodeReactionSingleton {
   //possibly add app name? some other customizable input/config?
   constructor() {
@@ -19,11 +24,13 @@ class NodeReactionSingleton {
 
   //have our current Transaction return a new internal trace reference
   createTrace(type) {
-    return this.currentTransaction.createTrace();
+    return this.currentTransaction.createTrace(type);
   }
 
   //will receive transaction from end of trace and restore
-  restoreCurrentTransaction(transaction) {}
+  restoreCurrentTransaction(transaction) {
+    this.currentTransaction = transaction;
+  }
 }
 
 let singleton = new NodeReactionSingleton();

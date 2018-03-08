@@ -1,7 +1,7 @@
 const { performance } = require("perf_hooks");
 const uuidv4 = require("uuid/v4");
 
-export default class Trace {
+class Trace {
   constructor(transaction, type) {
     this.transaction = transaction;
     this.type = type;
@@ -23,13 +23,19 @@ export default class Trace {
       `${this.uuid}-start`,
       `${this.uuid}-end`
     );
-    this.duration = performance.getEntriesByName(`${this.uuid}-duration`)[0];
+
+    this.duration = performance.getEntriesByName(
+      `${this.uuid}-duration`
+    )[0].duration;
 
     performance.clearMarks([`${this.uuid}-start`, `${this.uuid}-end`]);
-    performance.clearMeasure(`${this.uuid}-duration`);
+    performance.clearMeasures(`${this.uuid}-duration`);
 
     //update our state and notify toplevel singleton of completed state
     this.finished = true;
-    this.transaction.singleton.restoreCurrentTransaction(this.transaction);
+    console.log("my TRANS", this.transaction.uuid);
+    this.transaction.becomeGlobalTransaction();
   }
 }
+
+module.exports = Trace;
