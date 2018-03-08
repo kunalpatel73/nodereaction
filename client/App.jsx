@@ -12,7 +12,7 @@ class App extends Component {
         super(props);
         this.state = {
             routes: [],
-            currentRoute: [],
+            currentRoute: {},
         }
         this.setCurrentRoute = this.setCurrentRoute.bind(this);
         this.routeItemClicked = this.routeItemClicked.bind(this);
@@ -50,7 +50,13 @@ class App extends Component {
     }
 
     routeItemClicked(id) {
-        this.setState({ currentRoute: id })
+        // this.state.currentRoute = this.state.routes[id];
+        console.log(this.state.currentRoute)
+        const labelName = this.state.routes[id].requestMethod + ' ' + this.state.routes[id].requestUrl;
+        let newState = this.state;
+        newState.currentRoute.id = labelName
+        this.setState({ newState })
+
         console.log('route id: ' + id);
     }
     render() {

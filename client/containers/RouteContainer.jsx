@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import RouteTimelineContainer from './containers/RouteTimelineContainer.jsx';
-// import RouteTitle from '../components/RouteTitle';
+import RouteTimelineContainer from './RouteTimelineContainer.jsx';
+import RouteTitle from '../components/RouteTitle';
 
 class RouteContainer extends Component {
     constructor(props) {
@@ -10,10 +10,8 @@ class RouteContainer extends Component {
     render() {
         return (
             <div style={styles.routeContainer}>
-
-                <h1>{this.props.currentRoute}</h1>
-                {/* <RouteTitle /> */}
-                {/* <RouteTimelineContainer /> */}
+                <RouteTitle currentRoute = {this.props.currentRoute} />
+                <RouteTimelineContainer currentRoute = {this.props.currentRoute} />
             </div>
         )
     }
