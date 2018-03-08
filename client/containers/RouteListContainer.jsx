@@ -2,41 +2,18 @@ import React, { Component } from 'react';
 import RouteListItem from '../components/RouteListItem'; // this will be created deoending on the data we get back from fetch;
 import HeaderLogo from '../components/HeaderLogo';
 import FlatButton from 'material-ui/FlatButton';
-import Paper from 'material-ui/Paper';
-import { white } from 'material-ui/styles/colors';
+
 
 class RouteListContainer extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            routes: [],
-        }
-        this.createGraph = this.createGraph.bind(this);
-    }
-    componentDidMount() {
-        fetch('/routeList', {
-            method: 'GET'
-        })
-            .then(res => res.json())
-            .then(function (individualRoute) {
-                this.setState({ routes: individualRoute })//indevidualRoute should be all routes, using it this way for testing purposes;
-            }.bind(this))
-
-
-            .catch(error => console.error('Error:', error))
-    }
-
-    createGraph(event) {
-        let key = event.target.id;
-        // <div><Paper style={graphStyle} zDepth={2} /></div>
-        <div><FlatButton label='hello' /></div>
-        console.log('Helllooo')
     }
 
     render() {
         let routeItem = [];
-        for (let i = 0; i < this.state.routes.length; i++) {
-            routeItem.push(<div><FlatButton id={i} key={i} onClick={this.createGraph} label={this.state.routes[i]} /></div>);
+        for (let i = 0; i < this.props.routes.length; i++) {
+            const labelName = this.props.routes[i].requestMethod + ' ' + this.props.routes[i].requestUrl;
+            routeItem.push(<div><FlatButton id={i} key={i} onClick={() => { this.props.routeItemClicked(i) }} label={labelName} /></div>);
             // routeItem.push(<div><button>{this.state.routes[i]}</button></div>);
         }
         return (
@@ -48,14 +25,7 @@ class RouteListContainer extends Component {
         )
     }
 }
-const graphStyle = {
-    height: 100,
-    width: 100,
-    margin: 20,
-    textAlign: 'center',
-    display: 'inline-block',
-    backgroundColor: 'white'
-};
+
 
 const styles = {
     routeListBox: {
