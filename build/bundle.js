@@ -11619,18 +11619,28 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var HeaderTitle = function HeaderTitle(props) {
     return _react2.default.createElement(
-        'h1',
-        { style: titleStyles.projectTitle },
-        'Node Reaction'
+        'div',
+        null,
+        _react2.default.createElement(
+            'h1',
+            { style: titleStyles.projectTitle },
+            'Node Reaction',
+            _react2.default.createElement(
+                'small',
+                { style: { fontSize: 14 } },
+                '\xAE'
+            )
+        )
     );
 };
 var titleStyles = {
     projectTitle: {
         position: 'absolute',
         top: 0,
-        left: 650,
-        fontFamily: 'strumpf-std, sans-serif',
-        fontSize: 50
+        left: 550,
+        fontFamily: 'monoton, sans-serif',
+        fontSize: 50,
+        color: '#66FF66'
 
     }
 };
