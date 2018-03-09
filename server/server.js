@@ -71,12 +71,14 @@ app.post("/serverdata", (req, res) => {
     const transactions = req.body.packet;
     transactions.forEach(transaction => {
         console.log(JSON.stringify(transaction.traces));
-
         let trans = new Transaction({
             requestUrl: transaction.url,
             requestMethod: transaction.method,
             routeName: transaction.method + ' - ' + transaction.url,
-            transactionId: transaction.uuid
+            transactionId: transaction.uuid,
+            timestamp: transaction.timestamp,
+            duration: transaction.date,
+            date: transaction.date
         });
 
         transaction.traces.forEach(traces => {
