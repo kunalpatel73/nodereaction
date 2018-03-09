@@ -7,6 +7,7 @@ import Paper from 'material-ui/Paper';
 import { white } from 'material-ui/styles/colors';
 import RouteContainer from './containers/RouteContainer.jsx';
 
+
 class App extends Component {
     constructor(props) {
         super(props);
@@ -14,7 +15,6 @@ class App extends Component {
             routes: [],
             currentRoute: {},
         }
-        this.setCurrentRoute = this.setCurrentRoute.bind(this);
         this.routeItemClicked = this.routeItemClicked.bind(this);
     }
     componentDidMount() {
@@ -44,19 +44,13 @@ class App extends Component {
     //         .catch(error => console.error('Error:', error))
     // }
 
-    setCurrentRoute(id) {
-        this.state.currentRoute = this.state.routes[id];
-        this.setState({ currentRoute: routes[id] })
-    }
+
 
     routeItemClicked(id) {
-        // this.state.currentRoute = this.state.routes[id];
         console.log(this.state.currentRoute)
-        const labelName = this.state.routes[id].requestMethod + ' ' + this.state.routes[id].requestUrl;
         let newState = this.state;
-        newState.currentRoute.id = labelName
+        newState.currentRoute = this.state.routes[id]
         this.setState({ newState })
-
         console.log('route id: ' + id);
     }
     render() {

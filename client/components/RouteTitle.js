@@ -7,7 +7,7 @@ class RouteTitle extends Component {
 
     render() {
         return (
-            <h1>{this.props.currentRoute.id}</h1>
+            <h1>{this.props.currentRoute.requestMethod + ' ' + this.props.currentRoute.requestUrl}</h1>
         )
     }
 }

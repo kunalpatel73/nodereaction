@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import RouteGraphContainer from './RouteGraphContainer.jsx';
+
 
 class RouteTimelineContainer extends Component {
     constructor(props) {
@@ -7,7 +9,10 @@ class RouteTimelineContainer extends Component {
 
     render() {
         return (
-            <h1>{this.props.currentRoute.id}</h1>
+            <div>
+                <h1>{this.props.currentRoute.startTime}</h1>
+                <RouteGraphContainer currentRoute={this.props.currentRoute} />
+            </div>
         )
     }
 }
