@@ -1,19 +1,14 @@
-const NRA = require("../agent/NodeReactionAgent");
-
-//importing here will override for later invocation
-const httpLib = require("../agent/libraries/http.js");
-const mongoLib = require("../agent/libraries/mongo.js");
+const NRA = require('../agent/NodeReaction');
 
 const express = require("express");
 const app = express();
-const dogController = require("./db/dataController");
+const dogController = require("./controllers/dataController");
 const path = require("path");
 const bodyParser = require("body-parser");
 
 app.use(express.static(__dirname + "./../"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
 
 app.get('/routeList', (req, res, next) => {
     res.json([{
@@ -61,14 +56,21 @@ app.get('/routeList', (req, res, next) => {
     ]);
 });
 
-app.get("/doggos", dogController.getDogs, function (req, res) {
-    res.send("shouldnt hit");
+app.get("/dogs", dogController.getDogs, function(req, res) {
+  res.send("shouldnt hit");
 });
 
-app.post("/doggos", dogController.addDog, function (req, res) {
-    res.send("shouldnt hit");
+app.post("/dogs", dogController.addDog, function(req, res) {
+  res.send("shouldnt hit");
 });
 
-app.listen(3000, () => {
-    console.log("PORT 3000 is listening");
-}); //listens on port 3000 -> http://localhost:3000/
+app.post("/serverdata", (req, res) => {
+    console.log("PACKET INCOMING");
+    console.log(req.body.packet);
+    res.send("thank ya kindly");
+   });
+
+const PORT = 3001;
+app.listen(PORT, () => {
+  console.log(`PORT ${PORT} is listening`);
+});

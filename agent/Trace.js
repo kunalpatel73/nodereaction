@@ -33,7 +33,6 @@ class Trace {
 
     //update our state and notify toplevel singleton of completed state
     this.finished = true;
-    console.log("my TRANS", this.transaction.uuid);
     this.transaction.becomeGlobalTransaction();
   }
 }
