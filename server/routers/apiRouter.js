@@ -18,7 +18,7 @@ router.get('/getRoutes',
 
 // DEFAULT ROUTES
 router.all('*', (req, res, next) => {
-    err = new Error('countryRouter.js - default catch all route - not found');
+    err = new Error('apiRouter.js - default catch all route - not found');
     err.status = 404;
     next(err);
 });

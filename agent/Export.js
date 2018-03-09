@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 function sendToServer(data) {
   console.log(data);
   let serverData = { packet: data };
-  fetch("http://localhost:3001/serverdata", {
+  fetch("http://localhost:3000/serverdata", {
     method: "POST",
     body: JSON.stringify(serverData),
     headers: { "Content-Type": "application/json" }

@@ -11,9 +11,6 @@ class NodeReactionSingleton {
   constructor() {
     this.data = {
       "GET/dogs": {},
-      "GET/cats": {},
-      "GET/country": {},
-      "GET/countries": {},
     };
     this.currentTransaction = null;
     this.activeTransactionCount = 0;
@@ -21,7 +18,7 @@ class NodeReactionSingleton {
 
     setTimeout(() => {
       this.flushTransactions();
-    }, 15000);
+    }, 10000);
   }
 
   createTransaction(req) {
