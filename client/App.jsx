@@ -14,7 +14,7 @@ class App extends Component {
       routes: [],
       currentRoute: {}
     };
-    this.setCurrentRoute = this.setCurrentRoute.bind(this);
+
     this.routeItemClicked = this.routeItemClicked.bind(this);
   }
   componentDidMount() {
@@ -27,7 +27,7 @@ class App extends Component {
     })
       .then(res => res.json())
       .then(
-        function(routes) {
+        function (routes) {
           this.setState({ routes }); //indevidualRoute should be all routes, using it this way for testing purposes;
           // loadRoute(routes[0].routeName)
         }.bind(this)
@@ -46,24 +46,16 @@ class App extends Component {
   //         .catch(error => console.error('Error:', error))
   // }
 
-  setCurrentRoute(id) {
-    this.state.currentRoute = this.state.routes[id];
-    this.setState({ currentRoute: routes[id] });
-  }
+
 
   routeItemClicked(id) {
-    // this.state.currentRoute = this.state.routes[id];
-    console.log(this.state.currentRoute);
-    const labelName =
-      this.state.routes[id].requestMethod +
-      " " +
-      this.state.routes[id].requestUrl;
+    console.log(this.state.currentRoute)
     let newState = this.state;
-    newState.currentRoute.id = labelName;
-    this.setState({ newState });
-
-    console.log("route id: " + id);
+    newState.currentRoute = this.state.routes[id]
+    this.setState({ newState })
+    console.log('route id: ' + id);
   }
+
   render() {
     return (
       <div>

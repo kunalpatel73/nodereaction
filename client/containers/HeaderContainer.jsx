@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import HeaderTitle from "../components/HeaderTitle";
-import HeaderLogo from "../components/HeaderLogo";
-import RouteListItem from "../components/RouteListItem.js";
+// import HeaderLogo from "../components/HeaderLogo";
 
 class HeaderContainer extends Component {
   constructor(props) {
@@ -11,9 +10,7 @@ class HeaderContainer extends Component {
   render() {
     return (
       <div>
-        <RouteListItem />
         <HeaderTitle />
-        {/* <HeaderLogo /> */}
       </div>
     );
   }
