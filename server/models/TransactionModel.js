@@ -12,6 +12,9 @@ const transactionSchema = new Schema({
   'requestMethod': String, 
   'routeName': String,
   'transactionId': String,
+  'timestamp': Number,
+  'duration': Number,
+  'date': Date,
   'traces': [traceSchema] 
 });
 

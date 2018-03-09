@@ -11,8 +11,8 @@ class Transaction {
     this.traces = [];
     this.url = this.request.url;
     this.method = this.request.method;
-    this.timestamp = process.hrtime();
-    this.date = new Date.now();
+    this.timestamp = process.hrtime()[1]/1000000;
+    this.date = Date.now();
     performance.mark(`${this.uuid}-start`);
   }
 
@@ -38,9 +38,9 @@ class Transaction {
       `${this.uuid}-end`
     );
 
-    this.duration = performance.getEntriesByName(
+    this.duration = (performance.getEntriesByName(
       `${this.uuid}-duration`
-    )[0].duration;
+    )[0].duration)/100000000000;
 
     performance.clearMarks([`${this.uuid}-start`, `${this.uuid}-end`]);
     performance.clearMeasures(`${this.uuid}-duration`);
