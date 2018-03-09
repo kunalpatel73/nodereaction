@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 import React from 'react';
 
 const HeaderLogo = (props) => {
@@ -19,4 +21,5 @@ const styles = {
 }
 
 export default HeaderLogo;
+>>>>>>> f484a3bb8322690dc70b8d81ca8e22eeae2f0f8f
 

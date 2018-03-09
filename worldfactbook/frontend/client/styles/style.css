@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  html {
+    padding: 0px;
+    margin: 0px;
+  }
+  
+  body {
+    margin: 20px;
+    font-size: 1rm;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    background-color: #ccc;
+  }
+  
+  #appTitle {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  #countriesContainer {
+    list-style-type: none;
+  }
+
+  .flagContainer {
+    margin: 0 auto;
+    
+  }
