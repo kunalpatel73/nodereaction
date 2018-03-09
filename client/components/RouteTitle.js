@@ -7,7 +7,7 @@ class RouteTitle extends Component {
 
     render() {
         return (
-            <div>
+            <div style={{ color: '#FEFEFA' }}>
                 <span>{this.props.currentRoute.requestMethod}</span><span>{this.props.currentRoute.requestUrl}</span>
             </div>
         )

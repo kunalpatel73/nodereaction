@@ -11700,7 +11700,7 @@ var RouteListContainer = function (_Component) {
                 routeItem.push(_react2.default.createElement(
                     'div',
                     null,
-                    _react2.default.createElement(_FlatButton2.default, { id: i, key: i, onClick: function onClick() {
+                    _react2.default.createElement(_FlatButton2.default, { id: i, key: i, style: { color: '#FEFEFA' }, onClick: function onClick() {
                             _this2.props.routeItemClicked(i);
                         }, label: labelName })
                 ));
@@ -24441,7 +24441,7 @@ var RouteTitle = function (_Component) {
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                null,
+                { style: { color: '#FEFEFA' } },
                 _react2.default.createElement(
                     'span',
                     null,
