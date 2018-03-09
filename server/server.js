@@ -61,14 +61,14 @@ app.get('/routeList', (req, res, next) => {
     ]);
 });
 
-app.get("/doggos", dogController.getDogs, function(req, res) {
-  res.send("shouldnt hit");
+app.get("/doggos", dogController.getDogs, function (req, res) {
+    res.send("shouldnt hit");
 });
 
-app.post("/doggos", dogController.addDog, function(req, res) {
-  res.send("shouldnt hit");
+app.post("/doggos", dogController.addDog, function (req, res) {
+    res.send("shouldnt hit");
 });
 
 app.listen(3000, () => {
-  console.log("PORT 3000 is listening");
+    console.log("PORT 3000 is listening");
 }); //listens on port 3000 -> http://localhost:3000/

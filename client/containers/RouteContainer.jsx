@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import RouteTimelineContainer from './RouteTimelineContainer.jsx';
 import RouteTitle from '../components/RouteTitle';
 
+
 class RouteContainer extends Component {
     constructor(props) {
         super(props);
@@ -10,8 +11,8 @@ class RouteContainer extends Component {
     render() {
         return (
             <div style={styles.routeContainer}>
-                <RouteTitle currentRoute = {this.props.currentRoute} />
-                <RouteTimelineContainer currentRoute = {this.props.currentRoute} />
+                <RouteTitle currentRoute={this.props.currentRoute} />
+                <RouteTimelineContainer currentRoute={this.props.currentRoute} />
             </div>
         )
     }
