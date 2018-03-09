@@ -1,4 +1,4 @@
-const NRA = require('../agent/NodeReaction');
+const NRA = require('../../agent/NodeReaction');
 
 const express = require("express");
 const app = express();
@@ -6,7 +6,7 @@ const dogController = require("./controllers/dataController");
 const path = require("path");
 const bodyParser = require("body-parser");
 
-app.use(express.static(__dirname + "./../"));
+app.use(express.static(__dirname + "/./client/"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -26,5 +26,5 @@ app.post("/serverdata", (req, res) => {
 
 const PORT = 3001;
 app.listen(PORT, () => {
-  console.log(`PORT ${PORT} is listening`);
+  console.log(`***DOGGIE*** PORT ${PORT} is listening`);
 });

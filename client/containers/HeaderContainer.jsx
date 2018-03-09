@@ -1,21 +1,19 @@
-import React, { Component } from 'react';
-import HeaderTitle from '../components/HeaderTitle';
-import HeaderLogo from '../components/HeaderLogo';
+import React, { Component } from "react";
+import HeaderTitle from "../components/HeaderTitle";
+// import HeaderLogo from "../components/HeaderLogo";
 
 class HeaderContainer extends Component {
-    constructor(props) {
-        super(props);
-    }
+  constructor(props) {
+    super(props);
+  }
 
-    render() {
-        return (
-            <div>
-                <HeaderTitle />
-                {/* <HeaderLogo /> */}
-                
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div>
+        <HeaderTitle />
+      </div>
+    );
+  }
 }
 
 export default HeaderContainer;
