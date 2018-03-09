@@ -1,5 +1,6 @@
 const uuidv4 = require("uuid/v4");
 const Trace = require("./Trace");
+const { performance } = require("perf_hooks");
 
 class Transaction {
   constructor(singleton, request) {
@@ -9,7 +10,10 @@ class Transaction {
     this.finshed = false;
     this.traces = [];
     this.url = this.request.url;
-    this.method = this.request.method
+    this.method = this.request.method;
+    this.timestamp = process.hrtime();
+    this.date = new Date.now();
+    performance.mark(`${this.uuid}-start`);
   }
 
   createTrace(type) {
@@ -25,8 +29,21 @@ class Transaction {
 
   //set flag so singleton can flush us out and get GC'd
   endTransaction() {
-    //    console.log(`${this.url} Traces:`, this.traces);
     this.finished = true;
+
+    performance.mark(`${this.uuid}-end`);
+    performance.measure(
+      `${this.uuid}-duration`,
+      `${this.uuid}-start`,
+      `${this.uuid}-end`
+    );
+
+    this.duration = performance.getEntriesByName(
+      `${this.uuid}-duration`
+    )[0].duration;
+
+    performance.clearMarks([`${this.uuid}-start`, `${this.uuid}-end`]);
+    performance.clearMeasures(`${this.uuid}-duration`);
   }
 }
 
