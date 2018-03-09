@@ -1,8 +1,4 @@
-// const NRA = require("../agent/NodeReactionAgent");
-
-// //importing here will override for later invocation
-// const httpLib = require("../agent/libraries/http.js");
-// const mongoLib = require("../agent/libraries/mongo.js");
+const NRA = require('../agent/NodeReaction');
 
 const express = require("express");
 const app = express();
@@ -60,11 +56,11 @@ app.get('/routeList', (req, res, next) => {
     ]);
 });
 
-app.get("/doggos", dogController.getDogs, function(req, res) {
+app.get("/dogs", dogController.getDogs, function(req, res) {
   res.send("shouldnt hit");
 });
 
-app.post("/doggos", dogController.addDog, function(req, res) {
+app.post("/dogs", dogController.addDog, function(req, res) {
   res.send("shouldnt hit");
 });
 

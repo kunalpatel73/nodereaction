@@ -1,9 +1,9 @@
 "use strict";
 
 // NodeReaction
-const NRA = require("../../agent/NodeReactionAgent");
-const httpLib = require("../../agent/libraries/http.js");
-const mongoLib = require("../../agent/libraries/mongo.js");
+const NRA = require("../../agent/NodeReaction");
+// const httpLib = require("../../agent/libraries/http.js");
+// const mongoLib = require("../../agent/libraries/mongo.js");
 
 // NodeReaction - eric version
 // const Agent = require("./classes/agent");

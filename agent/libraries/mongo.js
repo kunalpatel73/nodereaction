@@ -1,4 +1,4 @@
-const NRA = require("../NodeReactionAgent");
+const NRA = require("../Agent");
 const mongo = require("mongodb-core");
 
 let original = mongo.Server.prototype.insert;
