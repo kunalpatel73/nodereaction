@@ -6,20 +6,13 @@ const request = require('request');
 const router = express.Router();
 
 // CONTROLLERS
-const countryController = require('../controllers/countryController');
+const apiController = require('../controllers/apiController');
 
 // ROUTES
-router.get('/test/:countryCode',
-  countryController.getCountry2,
+router.get('/getRoutes',
+  apiController.getRoutes,
   (req, res) => {
-    res.send(res.locals.country);
-  }
-);
-
-router.get('/:countryCode',
-  countryController.getCountry,
-  (req, res) => {
-    res.send(res.locals.country);
+    res.send(res.locals.routes);
   }
 );
 
