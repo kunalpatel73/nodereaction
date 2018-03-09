@@ -9,6 +9,8 @@ const titleStyles = {
         position: 'absolute',
         top: 0,
         left: 650,
+        fontFamily: 'strumpf-std, sans-serif',
+        fontSize: 50,
 
     }
 }
