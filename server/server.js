@@ -2,9 +2,13 @@ const NRA = require('../agent/NodeReaction');
 
 const express = require("express");
 const app = express();
-const dogController = require("./controllers/dataController");
 const path = require("path");
 const bodyParser = require("body-parser");
+const Transaction = require("./models/TransactionModel").Transaction;
+const Trace = require("./models/TransactionModel").Trace;
+
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost/dogs");
 
 app.use(express.static(__dirname + "./../"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -56,21 +60,54 @@ app.get('/routeList', (req, res, next) => {
     ]);
 });
 
-app.get("/dogs", dogController.getDogs, function(req, res) {
-  res.send("shouldnt hit");
-});
+// Mongoose schema
+// Mongo local db
+// Model for each transaction
 
-app.post("/dogs", dogController.addDog, function(req, res) {
-  res.send("shouldnt hit");
-});
-
+// Data dump from agent
 app.post("/serverdata", (req, res) => {
     console.log("PACKET INCOMING");
     console.log(req.body.packet);
-    res.send("thank ya kindly");
-   });
+    const transactions = req.body.packet;
+    transactions.forEach(transaction => {
+        console.log(JSON.stringify(transaction.traces));
 
-const PORT = 3001;
+        let trans = new Transaction({
+            requestUrl: transaction.url,
+            requestMethod: transaction.method,
+            routeName: transaction.method + ' - ' + transaction.url,
+            transactionId: transaction.uuid
+        });
+
+        transaction.traces.forEach(traces => {
+            trans.traces.push({
+                type: traces.type,
+                uuid: traces.uuid,
+                duration: traces.duration
+            })
+        })
+
+        trans.save((err, data) => {
+            if (err) return console.log(err);
+            return console.log('Success: ', data);
+        })
+    });
+    res.send("thank ya kindly");
+});
+
+// Data request from app
+app.get('/getData', (req, res) => {
+    console.log('Request recieved for data');
+    Transaction.find({})
+        .then(data => {
+            console.log('Success');
+            res.json(data);})
+        .catch(err => {
+            console.log('Error: ', err);
+        })
+})
+
+const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`PORT ${PORT} is listening`);
+    console.log(`***NODE REACTION*** PORT ${PORT} is listening`);
 });

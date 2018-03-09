@@ -9,6 +9,7 @@ class Transaction {
     this.finshed = false;
     this.traces = [];
     this.url = this.request.url;
+    this.method = this.request.method
   }
 
   createTrace(type) {
