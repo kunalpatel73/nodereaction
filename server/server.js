@@ -77,7 +77,7 @@ app.post("/serverdata", (req, res) => {
             routeName: transaction.method + ' - ' + transaction.url,
             transactionId: transaction.uuid,
             timestamp: transaction.timestamp,
-            duration: transaction.date,
+            duration: transaction.duration,
             date: transaction.date
         });
 
@@ -107,6 +107,17 @@ app.get('/getData', (req, res) => {
         .catch(err => {
             console.log('Error: ', err);
         })
+})
+
+app.get('/deleteData', (req, res) => {
+    Transaction.deleteMany({})
+        .then(data => {
+            console.log('Successful delete: ', data);
+            res.send('Successful delete')})
+        .catch(err => {
+            console.log('Error delete: ', err);
+            res.send('Error delete')
+        });
 })
 
 const PORT = 3000;

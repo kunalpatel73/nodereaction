@@ -11,8 +11,8 @@ class Transaction {
     this.traces = [];
     this.url = this.request.url;
     this.method = this.request.method;
-    this.timestamp = process.hrtime()[1]/1000000;
     this.date = Date.now();
+    this.timestamp = this.date;    
     performance.mark(`${this.uuid}-start`);
   }
 
