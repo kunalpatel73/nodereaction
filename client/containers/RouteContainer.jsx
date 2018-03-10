@@ -10,8 +10,8 @@ class RouteContainer extends Component {
     render() {
         return (
             <div style={styles.routeContainer}>
-                <RouteTitle currentRoute = {this.props.currentRoute} />
-                <RouteTimelineContainer currentRoute = {this.props.currentRoute} />
+                <RouteTitle currentRoute={this.props.currentRoute} />
+                <RouteTimelineContainer currentRoute={this.props.currentRoute} />
             </div>
         )
     }
@@ -21,7 +21,7 @@ const styles = {
     routeContainer: {
         position: 'absolute',
         top: 100,
-        left: 350,
+        left: 400,
         width: 800,
         height: 900,
         backgroundColor: '#323232'

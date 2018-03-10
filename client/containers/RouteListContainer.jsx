@@ -33,7 +33,7 @@ const styles = {
         position: 'absolute',
         top: 0,
         left: 0,
-        width: 300,
+        width: 380,
         height: 1000,
         backgroundColor: '#323232',
     },

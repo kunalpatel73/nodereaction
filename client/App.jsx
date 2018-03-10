@@ -22,13 +22,14 @@ class App extends Component {
   }
 
   loadRoutes() {
-    fetch("/routeList", {
+    fetch("/getData", {
       method: "GET"
     })
       .then(res => res.json())
       .then(
         function (routes) {
-          this.setState({ routes }); //indevidualRoute should be all routes, using it this way for testing purposes;
+          let currentRoute = routes[0];
+          this.setState({ routes, currentRoute }); //indevidualRoute should be all routes, using it this way for testing purposes;
           // loadRoute(routes[0].routeName)
         }.bind(this)
       )
@@ -48,6 +49,8 @@ class App extends Component {
 
 
 
+
+
   routeItemClicked(id) {
     console.log(this.state.currentRoute)
     let newState = this.state;
@@ -57,6 +60,8 @@ class App extends Component {
   }
 
   render() {
+
+    
     return (
       <div>
         <MuiThemeProvider>
